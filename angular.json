@@ -85,6 +85,17 @@
               "src/styles.css"
             ]
           }
+        },
+        "e2e": {
+          "builder": "playwright-ng-schematics:playwright",
+          "options": {
+            "devServerTarget": "sistema:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sistema:serve:production"
+            }
+          }
         }
       }
     }
