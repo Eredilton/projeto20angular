@@ -1,10 +1,41 @@
 
 
+<div >
+  <form  [formGroup]="cadastro">
+
+    <div >
+     ADICIONE PRODUTOS
+    </div>
 
 
+    <input placeholder="Ex. NOME" autocomplete="on" minlength="2" formControlName="nome">
 
-<div class="pai">
+    <input type="number" placeholder="Ex. VALOR" minlength="3" formControlName="valor">
 
-
-  <div class="filho"></div>
+  </form>
 </div>
+
+<div><button [disabled]="cadastro.invalid"(click)="cadastrarProduto()">CADASTRAR PRODUTO</button></div>
+
+
+
+<TABLE >
+  <CAPTION>Stock de artigos em armazem</CAPTION>
+  <TR>
+    <TH>POSIÇÃO</TH>
+    <TH>NOME</TH>
+    <TH>VALOR</TH>
+
+
+  </TR>
+
+  <TR *ngFor="let item of lista">
+
+    <TD>{{item.id}}</TD>
+    <TD>{{item.nome}}</TD>
+    <TD>{{item.valor}}</TD>
+    <TD><button (click)="deletar(item.id)">DELETAR</button></TD>
+  </TR>
+
+</TABLE>
+

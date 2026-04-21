@@ -13,3 +13,34 @@
   background-color: green;
   margin: auto;
 }
+
+
+
+table {
+
+     width: 100%;
+      margin: auto;
+      border-radius: 30px;
+
+      border: 1px dashed cyan;
+      padding: 5px;
+    }
+
+    th {
+      background-color: grey;
+      color: violet;
+      padding: 5;
+    }
+
+    tr {
+      border: 1px solid red;
+      padding: 5px;
+    }
+
+    td {
+      background-color: black;
+      border: 1px solid violet;
+      padding: 5px;
+      color: red;
+    }
+
