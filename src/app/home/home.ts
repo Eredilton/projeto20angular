@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { itemsList } from '../model/model';
+import { dadosList, itemsList, listaCompleta } from '../model/model';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GeralService } from '../service/geral-service';
 import { CommonModule } from '@angular/common';
@@ -18,40 +18,43 @@ import { CommonModule } from '@angular/common';
 export class Home {
 
   lista!:itemsList[];
+  listaDeDados!:dadosList[];
+  dadosCompletos!:listaCompleta[];
+  cadastro!:FormGroup;
   private formB=inject(FormBuilder);
 
 
 
-  cadastro:FormGroup = this.formB.group({
-    id: [''],
-    nome: ['', Validators.required],
-    valor: ['', Validators.required],
 
-    });
 
    public service = inject(GeralService)
 
   ngOnInit(): void {
+
    this.meusProdutos();
-
-
+   this.cadastrar();
+   this.minhaListaDados();
+   this.ListaDados();
 
   }
 
+cadastrar(){
 
+ this.cadastro = this.formB.group({
+    id: [''],
+    nome: ['', Validators.required,null],
+    valor: ['', Validators.required,null],
+
+    });
+
+}
 
 
   meusProdutos() {
-    this.service.getListaProdutosApi()
-      .subscribe({
-        next: (resposta: itemsList[]) => {
-          this.lista = resposta;
-           console.log(this.lista)
-        }
-      })
+    this.service.getListaProdutosApi().subscribe(
+      (resposta: itemsList[]) =>
+        {this.lista = resposta; console.log(this.lista)})
   }
-
-
 
 
 
@@ -74,9 +77,26 @@ export class Home {
 
 
 
+minhaListaDados() {
+
+    this.service.getDados()
+      .subscribe((resposta: any[]) => {
+          this.listaDeDados = resposta;
+           console.log(this.listaDeDados)
+
+      })
+  }
 
 
+ListaDados() {
 
+    this.service.listaGet()
+      .subscribe((resposta: any[]) => {
+          this.dadosCompletos = resposta;
+           console.log(this.dadosCompletos)
+
+      })
+  }
 
 
 

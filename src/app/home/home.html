@@ -1,4 +1,19 @@
 
+<div>
+
+
+
+
+
+
+  <img class="bichojogo" src="imagens/jogobicho.jpg" alt="">
+</div>
+
+
+
+
+
+
 
 <div >
   <form  [formGroup]="cadastro">
@@ -8,9 +23,9 @@
     </div>
 
 
-    <input placeholder="Ex. NOME" autocomplete="on" minlength="2" formControlName="nome">
+    <input type="text" placeholder="Ex. NOME" minlength="2" formControlName="nome">
 
-    <input type="number" placeholder="Ex. VALOR" minlength="3" formControlName="valor">
+    <input placeholder="Ex. VALOR" minlength="3" formControlName="valor">
 
   </form>
 </div>
@@ -39,3 +54,49 @@
 
 </TABLE>
 
+<br><br><br>
+<!-- ================================================================================================= -->
+<TABLE >
+  <CAPTION>CONSUMO DE API</CAPTION>
+  <TR>
+    <TH>POSIÇÃO</TH>
+    <TH>NOME</TH>
+    <TH>VALOR</TH>
+
+
+  </TR>
+
+  <TR *ngFor="let item of listaDeDados">
+
+    <TD>{{item.userId}}</TD>
+    <TD>{{item.id}}</TD>
+    <TD>{{item.title}}</TD>
+    <TD>{{item.completed}}</TD>
+  </TR>
+
+</TABLE>
+
+<br><br><br>
+
+<!-- ================================================================= -->
+<TABLE >
+  <CAPTION>CONSUMO DE API</CAPTION>
+  <TR>
+    <TH>POSIÇÃO</TH>
+    <TH>NOME</TH>
+    <TH>VALOR</TH>
+
+
+  </TR>
+
+  <TR *ngFor="let item of dadosCompletos">
+
+    <TD>{{item.id}}</TD>
+    <TD>{{item.name}}</TD>
+    <TD>{{item.email}}</TD>
+    <TD>{{item.address.city}}</TD>
+    <TD>{{item.address.zipcode}}</TD>
+
+  </TR>
+
+</TABLE>
